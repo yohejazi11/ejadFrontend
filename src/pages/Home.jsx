@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import Header from '../components/Header'
+import PilgrimEvaluationSection from '../components/PilgrimEvaluationSection';
+
 function Home() {
-    
+
     const [services, setServices] = useState([]);
 
     useEffect(() => {
@@ -22,7 +24,21 @@ function Home() {
             <Header />
 
             {/* intro vedio */}
-            <div className='w-[100%] h-[100vh] flex flex-col items-center justify-center pt-[60px] bg-gray-500'>
+            <div className='relative w-[100%] h-[100vh] flex flex-col items-center justify-center pt-[60px] bg-gray-500'>
+                <video autoplay muted loop playsinline preload="auto"
+                className='absolute top-0 left-0 w-[100%] h-[100vh] object-cover'
+                >
+                    <source src="videoplayback.mp4" type="video/mp4" />
+                    المتصفح لا يدعم وسم الفيديو.
+                </video>
+
+                <div className='absolute top-0 left-0 w-full h-full bg-black opacity-75'></div>
+
+                <div className='absolute bottom-[50px] left-[50px] h-[100px] w-[100px] flex flex-col border-[5px] border-double border-red-600 rounded-full items-center justify-center'>
+                    <img 
+                    className='w-[50%] h-[50%]'
+                    src='emergency-call.png'></img>
+                </div>
 
             </div>
 
@@ -63,9 +79,8 @@ function Home() {
             </div>
 
             {/* Service evaluation */}
-            <div className='w-[100%] h-[100vh] flex flex-col items-center justify-center pt-[60px]  bg-gray-50'>
+            <PilgrimEvaluationSection services={services} />
 
-            </div>
 
         </div>
     )
